@@ -2,156 +2,91 @@
 
 <head>
 
-    <style type="text/css">
-
+    <style type="text/css">
 /* CSS goes here */
-
 html, body {
-
 	background-color: #000;
-
 }
-
 h2, a, p {
-
 	color: #fff;
-
 	font-family: Roboto;
-
 	text-decoration: none;
-
 }
-
 p>a {
-
 	color: #fd084a;
-
 }
-
 .blink {
-
 animation: blink 0.5s infinite;
-
 }
-
 @keyframes blink{
-
 to { opacity: .0; }
-
 }
-
 .flex {
-
 	display: flex;
-
 }
-
 .header-sub-title {
-
 color: #fff;
-
 font-family: "Courier";
-
 font-size: 20px;
-
 padding: 0.1em;
-
 }
-
 </style>
 
-    
+    
 
 </head>
 
 <body>
 
-  <div class="flex">
+  <div class="flex">
 
 	<p class="header-sub-title" id="word"></p><p class="header-sub-title blink">|</p>
 
 </div>
 
-  
+  
 
 </body>
 
 <script type="text/javascript">
-
 /* Javascript goes here */
-
-const words = ["hee iine", "へえ、いいね", "㗾〜 好嘢喎"];
-
+const words = ["hee iine", "へえ、いいね", "㗾〜好嘢噃", "哇～真好呢"];
 let i = 0;
-
 let timer;
-
 function typingEffect() {
-
 	let word = words[i].split("");
-
 	var loopTyping = function() {
-
 		if (word.length > 0) {
-
 			document.getElementById('word').innerHTML += word.shift();
-
 		} else {
-
 			deletingEffect();
-
 			return false;
-
 		};
-
-		timer = setTimeout(loopTyping, 500);
-
+		timer = setTimeout(loopTyping, 150);
 	};
-
 	loopTyping();
-
 };
-
 function deletingEffect() {
-
 	let word = words[i].split("");
-
 	var loopDeleting = function() {
-
 		if (word.length > 0) {
-
 			word.pop();
-
 			document.getElementById('word').innerHTML = word.join("");
-
 		} else {
-
 			if (words.length > (i + 1)) {
-
 				i++;
-
 			} else {
-
 				i = 0;
-
 			};
-
 			typingEffect();
-
 			return false;
-
 		};
-
-		timer = setTimeout(loopDeleting, 200);
-
+		timer = setTimeout(loopDeleting, 150);
 	};
-
-	loopDeleting();
-
+	setTimeout(loopDeleting, 1000);
+	/*loopDeleting();*/
 };
-
 typingEffect();
-
 </script>
 
 </html>
